@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
+
+:root {
+  --background-dark: #0a1128;
+  --dark-blue: #3066be;
+  --light-blue: #00a3f5;
+  --light-green: #6bd425;
+  --pink: #ad487f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  height: -webkit-fill-available;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  min-height: -webkit-fill-available;
+}
+
+#root {
+  font-size: 62.5%;
+  height: 100%;
+  font-family: poppins;
+  background-color: var(--background-dark);
+}
+
+.header-container {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-img {
+  height: 5rem;
+}
+
+.header {
+  color: white;
+  font-size: 5rem;
+}
+
+.todo-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  gap: 2rem;
+}
+
+.todo-input {
+  padding-left: 1rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  border: none;
+}
+
+.add-todo-button {
+  height: 3rem;
+  width: 6rem;
+  background-color: var(--gradient);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  background: rgb(0, 174, 245);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 174, 245, 1) 3%,
+    rgba(255, 31, 210, 1) 95%
+  );
+}
+
+.todo-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.todo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #058ed9;
+  border-radius: 1rem;
+  width: 60%;
+  padding: 1rem 2rem 1rem 2rem;
+}
+
+.todo-text {
+  color: white;
+  font-size: 1.7rem;
+}
+
+.todo-checkbox {
+  accent-color: var(--light-green);
+  transform: scale(2);
+}
+
+.todo-left,
+.todo-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.todo-icon {
+  height: 2rem;
+}
