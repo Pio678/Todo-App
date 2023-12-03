@@ -1,4 +1,6 @@
-function ToDoForm() {
+import React from "react";
+
+function ToDoForm(props) {
   return (
     <form className="todo-form-container">
       <input
@@ -6,8 +8,14 @@ function ToDoForm() {
         type="text"
         name="new_task"
         placeholder="new task"
+        onChange={props.handleFormChange}
+        value={props.newTodo}
       />
-      <button className="add-todo-button" type="submit">
+      <button
+        className="add-todo-button"
+        type="submit"
+        onClick={props.addNewTodo}
+      >
         add
       </button>
     </form>
