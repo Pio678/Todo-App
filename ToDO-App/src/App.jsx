@@ -2,12 +2,21 @@ import "./css/App.css";
 import ToDoForm from "./components/ToDoForm";
 import Header from "./components/Header";
 import ToDoList from "./components/ToDoList";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function App() {
   const [newTodo, setNewTodo] = React.useState("");
 
-  const [todoList, setTodoList] = React.useState([]);
+  const [todoList, setTodoList] = React.useState(() => {
+    const localValue = localStorage.getItem("todoList");
+    if (localValue == null) return [];
+
+    return JSON.parse(localValue);
+  });
+
+  useEffect(() => {
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+  }, [todoList]);
 
   function toggleTodo(id) {
     setTodoList((prevTodolist) => {
