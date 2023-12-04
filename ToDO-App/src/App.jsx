@@ -13,7 +13,7 @@ function App() {
     setTodoList((prevTodolist) => {
       let newTodoList = prevTodolist.map((todo) => {
         if (todo.id === id) {
-          return { ...todo, isChecked: !todo.isChecked };
+          return { ...todo, isCompleted: !todo.isCompleted };
         }
         return todo;
       });
@@ -30,6 +30,25 @@ function App() {
     });
   }
 
+  //function turns edit mode on and off
+  function toggleTodoEditMode(id) {
+    setTodoList((prevTodolist) => {
+      return prevTodolist.map((todo) => {
+        return todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo;
+      });
+    });
+  }
+
+  function handleTodoEdit(e, id) {
+    console.log(e.target.value);
+
+    setTodoList((prevTodolist) =>
+      prevTodolist.map((todo) => {
+        return todo.id === id ? { ...todo, todoText: e.target.value } : todo;
+      })
+    );
+  }
+
   function handleFormChange(e) {
     setNewTodo(e.target.value);
   }
@@ -43,7 +62,12 @@ function App() {
     }
     setTodoList((prevTodolist) => [
       ...prevTodolist,
-      { id: crypto.randomUUID(), isChecked: false, todoText: newTodo },
+      {
+        id: crypto.randomUUID(),
+        isCompleted: false,
+        isEditing: false,
+        todoText: newTodo,
+      },
     ]);
 
     setNewTodo("");
@@ -60,7 +84,10 @@ function App() {
       <ToDoList
         todoList={todoList}
         toggleTodo={toggleTodo}
+        handleFormChange={handleFormChange}
         deleteTodo={deleteTodo}
+        toggleTodoEditMode={toggleTodoEditMode}
+        handleTodoEdit={handleTodoEdit}
       />
     </>
   );

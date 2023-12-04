@@ -9,12 +9,18 @@ function ToDo(props) {
           className="todo-checkbox"
           type="checkbox"
           onChange={props.toggleTodo}
-          checked={props.isChecked}
+          checked={props.isCompleted}
         />
-        <h2 className="todo-text">{props.todoText}</h2>
+        <h2 className={props.isCompleted ? "todo-text-completed" : "todo-text"}>
+          {props.todoText}
+        </h2>
       </div>
       <div className="todo-right">
-        <img className="todo-icon" src={editIcon} />
+        <img
+          className="todo-icon"
+          onClick={props.startTodoEditMode}
+          src={editIcon}
+        />
         <img
           className="todo-icon"
           onClick={props.deleteTodo}
